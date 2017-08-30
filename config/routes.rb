@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :transactions
   #User Authentication/Autorization
   post '/user/register' => "users#create"
   post '/user/login' => "users#login"
@@ -14,5 +15,10 @@ Rails.application.routes.draw do
   post '/listing/all' => "listings#all"
   get '/listing/view/:id' => "listings#view"
   post '/listing/hire' => "listings#send_text_message"
+  post '/listing/update' => "listings#update"
+
+
+  #Transaction
+  post '/transaction/payment' => "transactions#payment"
 
 end

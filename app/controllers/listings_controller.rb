@@ -10,6 +10,11 @@ class ListingsController < ApplicationController
 		end
 	end
 
+	def update
+		@listing = Listing.where(id: params[:id])
+		@listing_update = @listing.update(listing_params)
+	end
+
 	def view
 		@listing = Listing.find(params[:id])
 		@user_id = Listing.where(id: params[:id])
@@ -69,7 +74,7 @@ class ListingsController < ApplicationController
 	private
 	def listing_params
 		params.permit(
-			:title,:category,:price,:state,:address,:city,:zipcode,:images,
-			:description,:phone,:website,:email,:user_id,:id)
+			:title,:category,:price,:state,:address,:city,:zipcode,:images,:images2,:images3,:images4,
+			:description,:phone,:website,:email,:user_id,:id,:rate)
 	end
 end
