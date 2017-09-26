@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830150826) do
+ActiveRecord::Schema.define(version: 20170918170020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,47 @@ ActiveRecord::Schema.define(version: 20170830150826) do
     t.string "images3"
     t.string "images4"
     t.string "rate"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "images"
+    t.string "category"
+    t.string "status_by_hobbez"
+    t.string "status_by_customer"
+    t.bigint "customer_id"
+    t.bigint "hobbez_id"
+    t.string "references"
+    t.string "description"
+    t.string "duration"
+    t.string "duration_type"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
+    t.string "review"
+    t.boolean "approved"
+    t.bigint "listing_id"
+  end
+
+  create_table "task_completeds", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "listing_id"
+    t.bigint "upvote"
+    t.bigint "downvote"
+  end
+
+  create_table "task_not_completeds", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "listing_id"
+    t.string "description"
   end
 
   create_table "transactions", force: :cascade do |t|

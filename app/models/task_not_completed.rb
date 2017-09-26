@@ -1,0 +1,2 @@
+class TaskNotCompleted < ApplicationRecord
+end
